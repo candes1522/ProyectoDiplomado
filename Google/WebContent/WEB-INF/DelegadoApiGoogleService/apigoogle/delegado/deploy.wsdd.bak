@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DelegadoApiGoogleService WSDL service -->
+
+  <service name="DelegadoApiGoogle" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://delegado.apigoogle"/>
+      <parameter name="wsdlServiceElement" value="DelegadoApiGoogleService"/>
+      <parameter name="schemaQualified" value="http://delegado.apigoogle"/>
+      <parameter name="wsdlServicePort" value="DelegadoApiGoogle"/>
+      <parameter name="className" value="apigoogle.delegado.DelegadoApiGoogleSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="DelegadoApiGoogle"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="geolocalizacion" qname="operNS:geolocalizacion" xmlns:operNS="http://delegado.apigoogle" returnQName="retNS:geolocalizacionReturn" xmlns:retNS="http://delegado.apigoogle" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:direcciones" xmlns:pns="http://delegado.apigoogle" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="geolocalizacion"/>
+
+  </service>
+</deployment>

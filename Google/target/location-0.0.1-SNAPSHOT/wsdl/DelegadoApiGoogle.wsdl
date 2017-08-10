@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://delegado.apigoogle" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://delegado.apigoogle" xmlns:intf="http://delegado.apigoogle" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://delegado.apigoogle" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="geolocalizacion">
+    <complexType>
+     <sequence>
+      <element name="direcciones" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="geolocalizacionResponse">
+    <complexType>
+     <sequence>
+      <element name="geolocalizacionReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="geolocalizacionResponse">
+
+      <wsdl:part element="impl:geolocalizacionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="geolocalizacionRequest">
+
+      <wsdl:part element="impl:geolocalizacion" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="DelegadoApiGoogle">
+
+      <wsdl:operation name="geolocalizacion">
+
+         <wsdl:input message="impl:geolocalizacionRequest" name="geolocalizacionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:geolocalizacionResponse" name="geolocalizacionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="DelegadoApiGoogleSoapBinding" type="impl:DelegadoApiGoogle">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="geolocalizacion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="geolocalizacionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="geolocalizacionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="DelegadoApiGoogleService">
+
+      <wsdl:port binding="impl:DelegadoApiGoogleSoapBinding" name="DelegadoApiGoogle">
+
+         <wsdlsoap:address location="http://localhost:8080/Google/services/DelegadoApiGoogle"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
